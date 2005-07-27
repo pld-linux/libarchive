@@ -24,7 +24,7 @@ variants and several CPIO formats. It can also write SHAR archives.
 %description -l pl
 Libarchive jest bibliotek± s³u¿ac± to tworzenia i odczytu wielu
 ró¿nych strumieniowych formatów archiwów, w³±czaj±c w to popularne
-odmiany TAR oraz wiele formatów CPIO. Biblioteka ta poptrafi tak¿e
+odmiany TAR oraz wiele formatów CPIO. Biblioteka ta potrafi tak¿e
 zapisywaæ archiwa SHAR.
 
 %package devel
@@ -73,6 +73,9 @@ rm -rf $RPM_BUILD_ROOT
 cd $RPM_BUILD_ROOT%{_libdir}
 ln -sf libarchive.so.*.*.* $RPM_BUILD_ROOT%{_libdir}/libarchive.so
 
+%clean
+rm -rf $RPM_BUILD_ROOT
+
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
@@ -91,6 +94,3 @@ ln -sf libarchive.so.*.*.* $RPM_BUILD_ROOT%{_libdir}/libarchive.so
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libarchive.a
-
-%clean
-rm -rf $RPM_BUILD_ROOT
