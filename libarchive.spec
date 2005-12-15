@@ -1,13 +1,16 @@
+#
+# Conditional build:
+%bcond_without	static_libs # don't build static libraries
+#
 Summary:	Library to create and read several different archive formats
 Summary(pl):	Biblioteka do tworzenia i odczytu ró¿nych formatów archiwów
 Name:		libarchive
-Version:	1.02.034
+Version:	1.2.37
 Release:	1
 License:	BSD
 Group:		Libraries
 Source0:	http://people.freebsd.org/~kientzle/libarchive/src/%{name}-%{version}.tar.gz
-# Source0-md5:	f4516a396d04eeae65a144150e3b17cc
-Patch0:		%{name}-shared.patch
+# Source0-md5:	c805505a06b5af5976a12c02351a76b9
 URL:		http://people.freebsd.org/~kientzle/libarchive/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -53,7 +56,6 @@ Statyczna biblioteka libarchive.
 
 %prep
 %setup -q
-%patch -p1
 
 %build
 %{__libtoolize}
@@ -61,17 +63,14 @@ Statyczna biblioteka libarchive.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-%configure
-%{__make} \
-	LDFLAGS="%{rpmldflags} -lz -lbz2"
+%configure \
+	--enable-static=%{?with_static_libs:yes}%{!?with_static_libs:no}
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
-
-cd $RPM_BUILD_ROOT%{_libdir}
-ln -sf libarchive.so.*.*.* $RPM_BUILD_ROOT%{_libdir}/libarchive.so
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -91,6 +90,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man3/*
 %{_mandir}/man5/*
 
+%if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libarchive.a
+%endif
