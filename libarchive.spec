@@ -14,9 +14,12 @@ Source0:	http://people.freebsd.org/~kientzle/libarchive/src/%{name}-%{version}.t
 Patch0:		%{name}-CVE-2006-5680.patch
 Patch1:		%{name}-man_progname.patch
 URL:		http://people.freebsd.org/~kientzle/libarchive/
+BuildRequires:	acl-devel
+BuildRequires:	attr-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	bzip2-devel
+# for <ext2fs/ext2_fs.h>
 BuildRequires:	e2fsprogs-devel
 BuildRequires:	libtool
 BuildRequires:	zlib-devel
@@ -38,6 +41,10 @@ Summary:	Header files for libarchive library
 Summary(pl):	Pliki nag³ówkowe biblioteki libarchive
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
+Requires:	acl-devel
+Requires:	attr-devel
+Requires:	bzip2-devel
+Requires:	zlib-devel
 
 %description devel
 Header files for libarchive library.
