@@ -6,7 +6,7 @@ Summary:	Library to create and read several different archive formats
 Summary(pl):	Biblioteka do tworzenia i odczytu ró¿nych formatów archiwów
 Name:		libarchive
 Version:	1.3.1
-Release:	0.1
+Release:	1
 License:	BSD
 Group:		Libraries
 Source0:	http://people.freebsd.org/~kientzle/libarchive/src/%{name}-%{version}.tar.gz
