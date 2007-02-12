@@ -3,7 +3,7 @@
 %bcond_without	static_libs # don't build static libraries
 #
 Summary:	Library to create and read several different archive formats
-Summary(pl):	Biblioteka do tworzenia i odczytu ró¿nych formatów archiwów
+Summary(pl.UTF-8):   Biblioteka do tworzenia i odczytu rÃ³Å¼nych formatÃ³w archiwÃ³w
 Name:		libarchive
 Version:	1.3.1
 Release:	1
@@ -30,15 +30,15 @@ Libarchive is a programming library that can create and read several
 different streaming archive formats, including most popular TAR
 variants and several CPIO formats. It can also write SHAR archives.
 
-%description -l pl
-Libarchive jest bibliotek± s³u¿ac± to tworzenia i odczytu wielu
-ró¿nych strumieniowych formatów archiwów, w³±czaj±c w to popularne
-odmiany TAR oraz wiele formatów CPIO. Biblioteka ta potrafi tak¿e
-zapisywaæ archiwa SHAR.
+%description -l pl.UTF-8
+Libarchive jest bibliotekÄ… sÅ‚uÅ¼acÄ… to tworzenia i odczytu wielu
+rÃ³Å¼nych strumieniowych formatÃ³w archiwÃ³w, wÅ‚Ä…czajÄ…c w to popularne
+odmiany TAR oraz wiele formatÃ³w CPIO. Biblioteka ta potrafi takÅ¼e
+zapisywaÄ‡ archiwa SHAR.
 
 %package devel
 Summary:	Header files for libarchive library
-Summary(pl):	Pliki nag³ówkowe biblioteki libarchive
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe biblioteki libarchive
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	acl-devel
@@ -49,31 +49,31 @@ Requires:	zlib-devel
 %description devel
 Header files for libarchive library.
 
-%description devel -l pl
-Pliki nag³ówkowe biblioteki libarchive.
+%description devel -l pl.UTF-8
+Pliki nagÅ‚Ã³wkowe biblioteki libarchive.
 
 %package static
 Summary:	Static libarchive library
-Summary(pl):	Statyczna biblioteka libarchive
+Summary(pl.UTF-8):   Statyczna biblioteka libarchive
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static libarchive library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna biblioteka libarchive.
 
 %package -n bsdtar
 Summary:	bsdtar - tar(1) implementation based on libarchive
-Summary(pl):	bsdtar - implementacja programu tar(1) oparta na libarchive
+Summary(pl.UTF-8):   bsdtar - implementacja programu tar(1) oparta na libarchive
 Group:		Applications/Archiving
 Requires:	%{name} = %{version}-%{release}
 
 %description -n bsdtar
 bsdtar - tar(1) implementation based on libarchive.
 
-%description -n bsdtar -l pl
+%description -n bsdtar -l pl.UTF-8
 bsdtar - implementacja programu tar(1), oparta na libarchive.
 
 %prep
