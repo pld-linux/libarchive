@@ -3,7 +3,7 @@
 %bcond_without	static_libs # don't build static libraries
 #
 Summary:	Library to create and read several different archive formats
-Summary(pl.UTF-8):   Biblioteka do tworzenia i odczytu różnych formatów archiwów
+Summary(pl.UTF-8):	Biblioteka do tworzenia i odczytu różnych formatów archiwów
 Name:		libarchive
 Version:	1.3.1
 Release:	1
@@ -38,7 +38,7 @@ zapisywać archiwa SHAR.
 
 %package devel
 Summary:	Header files for libarchive library
-Summary(pl.UTF-8):   Pliki nagłówkowe biblioteki libarchive
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libarchive
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	acl-devel
@@ -54,7 +54,7 @@ Pliki nagłówkowe biblioteki libarchive.
 
 %package static
 Summary:	Static libarchive library
-Summary(pl.UTF-8):   Statyczna biblioteka libarchive
+Summary(pl.UTF-8):	Statyczna biblioteka libarchive
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
@@ -66,7 +66,7 @@ Statyczna biblioteka libarchive.
 
 %package -n bsdtar
 Summary:	bsdtar - tar(1) implementation based on libarchive
-Summary(pl.UTF-8):   bsdtar - implementacja programu tar(1) oparta na libarchive
+Summary(pl.UTF-8):	bsdtar - implementacja programu tar(1) oparta na libarchive
 Group:		Applications/Archiving
 Requires:	%{name} = %{version}-%{release}
 
