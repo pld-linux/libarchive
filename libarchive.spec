@@ -5,12 +5,12 @@
 Summary:	Library to create and read several different archive formats
 Summary(pl.UTF-8):	Biblioteka do tworzenia i odczytu różnych formatów archiwów
 Name:		libarchive
-Version:	2.4.11
+Version:	2.4.12
 Release:	1
 License:	BSD
 Group:		Libraries
 Source0:	http://people.freebsd.org/~kientzle/libarchive/src/%{name}-%{version}.tar.gz
-# Source0-md5:	139eb1c7a7a7f45e75c0a7e7f98d6c0d
+# Source0-md5:	3f8dc6737bc0fd031b7e64b143eade02
 Patch0:		%{name}-man_progname.patch
 URL:		http://people.freebsd.org/~kientzle/libarchive/
 BuildRequires:	acl-devel
@@ -21,6 +21,7 @@ BuildRequires:	bzip2-devel
 # for <ext2fs/ext2_fs.h>
 BuildRequires:	e2fsprogs-devel
 BuildRequires:	libtool
+BuildRequires:	sharutils
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -87,7 +88,7 @@ bsdtar - implementacja programu tar(1), oparta na libarchive.
 %{__automake}
 %configure \
 	--enable-static=%{?with_static_libs:yes}%{!?with_static_libs:no}
-%{__make}
+%{__make} -j1
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -103,6 +104,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libarchive.so.*.*.*
+%attr(755,root,root) %{_libdir}/libarchive.so.?
 
 %files devel
 %defattr(644,root,root,755)
