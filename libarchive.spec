@@ -5,12 +5,12 @@
 Summary:	Library to create and read several different archive formats
 Summary(pl.UTF-8):	Biblioteka do tworzenia i odczytu różnych formatów archiwów
 Name:		libarchive
-Version:	2.6.0
+Version:	2.8.3
 Release:	1
 License:	BSD
 Group:		Libraries
-Source0:	http://people.freebsd.org/~kientzle/libarchive/src/%{name}-%{version}.tar.gz
-# Source0-md5:	e8ceea99a86b022e192a06d2b411a29b
+Source0:	http://libarchive.googlecode.com/files/libarchive-2.8.3.tar.gz
+# Source0-md5:	fe8d917e101d4b37580124030842a1d0
 Patch0:		%{name}-man_progname.patch
 URL:		http://people.freebsd.org/~kientzle/libarchive/
 BuildRequires:	acl-devel
@@ -81,11 +81,11 @@ bsdtar - implementacja programu tar(1), oparta na libarchive.
 %patch0 -p1
 
 %build
-%{__libtoolize}
-%{__aclocal}
-%{__autoconf}
-%{__autoheader}
-%{__automake}
+#%%{__libtoolize}
+#%%{__aclocal}
+#%%{__autoconf}
+#%%{__autoheader}
+#%%{__automake}
 %configure \
 	--enable-static=%{?with_static_libs:yes}%{!?with_static_libs:no}
 %{__make} -j1
