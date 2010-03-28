@@ -6,7 +6,7 @@ Summary:	Library to create and read several different archive formats
 Summary(pl.UTF-8):	Biblioteka do tworzenia i odczytu różnych formatów archiwów
 Name:		libarchive
 Version:	2.8.3
-Release:	1
+Release:	2
 License:	BSD
 Group:		Libraries
 Source0:	http://libarchive.googlecode.com/files/libarchive-2.8.3.tar.gz
@@ -15,8 +15,8 @@ Patch0:		%{name}-man_progname.patch
 URL:		http://people.freebsd.org/~kientzle/libarchive/
 BuildRequires:	acl-devel
 BuildRequires:	attr-devel
-BuildRequires:	autoconf
-BuildRequires:	automake
+#BuildRequires:	autoconf
+#BuildRequires:	automake
 BuildRequires:	bzip2-devel
 # for <ext2fs/ext2_fs.h>
 BuildRequires:	e2fsprogs-devel
