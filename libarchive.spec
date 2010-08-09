@@ -5,12 +5,12 @@
 Summary:	Library to create and read several different archive formats
 Summary(pl.UTF-8):	Biblioteka do tworzenia i odczytu różnych formatów archiwów
 Name:		libarchive
-Version:	2.8.3
-Release:	4
+Version:	2.8.4
+Release:	1
 License:	BSD
 Group:		Libraries
 Source0:	http://libarchive.googlecode.com/files/%{name}-%{version}.tar.gz
-# Source0-md5:	fe8d917e101d4b37580124030842a1d0
+# Source0-md5:	83b237a542f27969a8d68ac217dc3796
 Patch0:		%{name}-man_progname.patch
 URL:		http://people.freebsd.org/~kientzle/libarchive/
 BuildRequires:	acl-devel
@@ -47,6 +47,7 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	acl-devel
 Requires:	attr-devel
 Requires:	bzip2-devel
+Requires:	libxml2-devel
 Requires:	openssl-devel
 Requires:	xz-devel
 Requires:	zlib-devel
@@ -68,6 +69,18 @@ Static libarchive library.
 
 %description static -l pl.UTF-8
 Statyczna biblioteka libarchive.
+
+%package -n bsdcpio
+Summary:	bsdcpio - cpio(1) implementation based on libarchive
+Summary(pl.UTF-8):	bsdcpio - implementacja programu cpio(1) oparta na libarchive
+Group:		Applications/Archiving
+Requires:	%{name} = %{version}-%{release}
+
+%description -n bsdcpio
+bsdcpio - cpio(1) implementation based on libarchive.
+
+%description -n bsdcpio -l pl.UTF-8
+bsdcpio - implementacja programu cpio(1), oparta na libarchive.
 
 %package -n bsdtar
 Summary:	bsdtar - tar(1) implementation based on libarchive
@@ -109,21 +122,27 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libarchive.so.*.*.*
-%attr(755,root,root) %{_libdir}/libarchive.so.?
+%attr(755,root,root) %ghost %{_libdir}/libarchive.so.2
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libarchive.so
 %{_libdir}/libarchive.la
 %{_includedir}/*.h
-%{_mandir}/man3/*
-%{_mandir}/man5/*
+%{_mandir}/man3/*.3*
+%{_mandir}/man5/*.5*
+%{_pkgconfigdir}/libarchive.pc
 
 %if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libarchive.a
 %endif
+
+%files -n bsdcpio
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/bsdcpio
+%{_mandir}/man1/bsdcpio.1*
 
 %files -n bsdtar
 %defattr(644,root,root,755)
