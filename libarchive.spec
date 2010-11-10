@@ -9,13 +9,14 @@ Version:	2.8.4
 Release:	2
 License:	BSD
 Group:		Libraries
+#Source0Download: http://code.google.com/p/libarchive/downloads/list
 Source0:	http://libarchive.googlecode.com/files/%{name}-%{version}.tar.gz
 # Source0-md5:	83b237a542f27969a8d68ac217dc3796
 Patch0:		%{name}-man_progname.patch
 URL:		http://people.freebsd.org/~kientzle/libarchive/
 BuildRequires:	acl-devel
 BuildRequires:	attr-devel
-#BuildRequires:	autoconf
+#BuildRequires:	autoconf >= 2.50
 #BuildRequires:	automake
 BuildRequires:	bzip2-devel
 # for <ext2fs/ext2_fs.h>
@@ -105,7 +106,7 @@ bsdtar - implementacja programu tar(1), oparta na libarchive.
 #%%{__autoheader}
 #%%{__automake}
 %configure \
-	--enable-static=%{?with_static_libs:yes}%{!?with_static_libs:no}
+	--enable-static%{!?with_static_libs:=no}
 %{__make} -j1
 
 %install
@@ -128,9 +129,14 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libarchive.so
 %{_libdir}/libarchive.la
-%{_includedir}/*.h
-%{_mandir}/man3/*.3*
-%{_mandir}/man5/*.5*
+%{_includedir}/archive*.h
+%{_mandir}/man3/archive_*.3*
+%{_mandir}/man3/libarchive.3*
+%{_mandir}/man3/libarchive_internals.3*
+%{_mandir}/man5/libarchive-formats.5*
+%{_mandir}/man5/cpio.5*
+%{_mandir}/man5/mtree.5*
+%{_mandir}/man5/tar.5*
 %{_pkgconfigdir}/libarchive.pc
 
 %if %{with static_libs}
