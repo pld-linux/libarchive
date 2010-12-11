@@ -6,7 +6,7 @@ Summary:	Library to create and read several different archive formats
 Summary(pl.UTF-8):	Biblioteka do tworzenia i odczytu różnych formatów archiwów
 Name:		libarchive
 Version:	2.8.4
-Release:	2
+Release:	3
 License:	BSD
 Group:		Libraries
 #Source0Download: http://code.google.com/p/libarchive/downloads/list
