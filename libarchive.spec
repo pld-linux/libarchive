@@ -5,26 +5,25 @@
 Summary:	Library to create and read several different archive formats
 Summary(pl.UTF-8):	Biblioteka do tworzenia i odczytu różnych formatów archiwów
 Name:		libarchive
-Version:	2.8.5
+Version:	3.0.2
 Release:	1
 License:	BSD
 Group:		Libraries
 #Source0Download: http://code.google.com/p/libarchive/downloads/list
 Source0:	http://libarchive.googlecode.com/files/%{name}-%{version}.tar.gz
-# Source0-md5:	9caf51dcf6213e9c9f5a1c27448b9c90
+# Source0-md5:	4df33cb107c9702c80473e0794ddf833
 Patch0:		%{name}-man_progname.patch
 URL:		http://people.freebsd.org/~kientzle/libarchive/
 BuildRequires:	acl-devel
 BuildRequires:	attr-devel
-#BuildRequires:	autoconf >= 2.50
+#BuildRequires:	autoconf >= 2.65
 #BuildRequires:	automake
 BuildRequires:	bzip2-devel
 # for <ext2fs/ext2_fs.h>
 BuildRequires:	e2fsprogs-devel
-BuildRequires:	libmd5-devel
 #BuildRequires:	libtool
 BuildRequires:	libxml2-devel
-BuildRequires:	openssl-devel
+BuildRequires:	nettle-devel
 BuildRequires:	xz-devel
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -49,7 +48,7 @@ Requires:	acl-devel
 Requires:	attr-devel
 Requires:	bzip2-devel
 Requires:	libxml2-devel
-Requires:	openssl-devel
+Requires:	nettle-devel
 Requires:	xz-devel
 Requires:	zlib-devel
 
@@ -106,6 +105,8 @@ bsdtar - implementacja programu tar(1), oparta na libarchive.
 #%%{__autoheader}
 #%%{__automake}
 %configure \
+	--enable-bsdcpio=shared \
+	--enable-bsdtar=shared \
 	--enable-static%{!?with_static_libs:=no}
 %{__make} -j1
 
@@ -123,7 +124,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libarchive.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libarchive.so.2
+%attr(755,root,root) %ghost %{_libdir}/libarchive.so.12
 
 %files devel
 %defattr(644,root,root,755)
