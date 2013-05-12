@@ -5,15 +5,14 @@
 Summary:	Library to create and read several different archive formats
 Summary(pl.UTF-8):	Biblioteka do tworzenia i odczytu różnych formatów archiwów
 Name:		libarchive
-Version:	3.0.3
-Release:	2
+Version:	3.0.4
+Release:	1
 License:	BSD
 Group:		Libraries
-#Source0Download: http://code.google.com/p/libarchive/downloads/list
-Source0:	http://libarchive.googlecode.com/files/%{name}-%{version}.tar.gz
-# Source0-md5:	ca4090f0099432a9ac5a8b6618dc3892
+Source0:	http://www.libarchive.org/downloads/%{name}-%{version}.tar.gz
+# Source0-md5:	af443ca9a10ddbcbf00f7ae34ca7fc16
 Patch0:		%{name}-man_progname.patch
-URL:		http://people.freebsd.org/~kientzle/libarchive/
+URL:		http://www.libarchive.org/
 BuildRequires:	acl-devel
 BuildRequires:	attr-devel
 #BuildRequires:	autoconf >= 2.65
