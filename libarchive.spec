@@ -5,12 +5,12 @@
 Summary:	Library to create and read several different archive formats
 Summary(pl.UTF-8):	Biblioteka do tworzenia i odczytu różnych formatów archiwów
 Name:		libarchive
-Version:	3.0.4
+Version:	3.1.2
 Release:	1
 License:	BSD
 Group:		Libraries
 Source0:	http://www.libarchive.org/downloads/%{name}-%{version}.tar.gz
-# Source0-md5:	af443ca9a10ddbcbf00f7ae34ca7fc16
+# Source0-md5:	efad5a503f66329bb9d2f4308b5de98a
 Patch0:		%{name}-man_progname.patch
 URL:		http://www.libarchive.org/
 BuildRequires:	acl-devel
@@ -22,6 +22,7 @@ BuildRequires:	bzip2-devel
 BuildRequires:	e2fsprogs-devel
 #BuildRequires:	libtool
 BuildRequires:	libxml2-devel
+BuildRequires:	lzo-devel >= 2
 BuildRequires:	nettle-devel
 BuildRequires:	xz-devel
 BuildRequires:	zlib-devel
@@ -104,6 +105,7 @@ bsdtar - implementacja programu tar(1), oparta na libarchive.
 #%%{__autoheader}
 #%%{__automake}
 %configure \
+	--disable-silent-rules \
 	--enable-bsdcpio=shared \
 	--enable-bsdtar=shared \
 	--enable-static%{!?with_static_libs:=no}
@@ -123,7 +125,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libarchive.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libarchive.so.12
+%attr(755,root,root) %ghost %{_libdir}/libarchive.so.13
 
 %files devel
 %defattr(644,root,root,755)
@@ -132,6 +134,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/archive*.h
 %{_mandir}/man3/archive_*.3*
 %{_mandir}/man3/libarchive.3*
+%{_mandir}/man3/libarchive_changes.3*
 %{_mandir}/man3/libarchive_internals.3*
 %{_mandir}/man5/libarchive-formats.5*
 %{_mandir}/man5/cpio.5*
