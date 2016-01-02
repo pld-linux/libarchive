@@ -1,8 +1,8 @@
 #
 # Conditional build:
 %bcond_without	static_libs # don't build static libraries
-#
-Summary:	Library to create and read several different archive formats
+
+Summary:	Multi-format archive and compression library
 Summary(pl.UTF-8):	Biblioteka do tworzenia i odczytu różnych formatów archiwów
 Name:		libarchive
 Version:	3.1.2
@@ -15,12 +15,9 @@ Patch0:		%{name}-man_progname.patch
 URL:		http://www.libarchive.org/
 BuildRequires:	acl-devel
 BuildRequires:	attr-devel
-#BuildRequires:	autoconf >= 2.65
-#BuildRequires:	automake
 BuildRequires:	bzip2-devel
 # for <ext2fs/ext2_fs.h>
 BuildRequires:	e2fsprogs-devel
-#BuildRequires:	libtool
 BuildRequires:	libxml2-devel
 BuildRequires:	lzo-devel >= 2
 BuildRequires:	nettle-devel
@@ -31,7 +28,11 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Libarchive is a programming library that can create and read several
 different streaming archive formats, including most popular TAR
-variants and several CPIO formats. It can also write SHAR archives.
+variants, several CPIO formats, and both BSD and GNU ar variants. It
+can also write SHAR archives and read ISO9660 CDROM images and ZIP
+archives.
+
+See README for complete format support.
 
 %description -l pl.UTF-8
 Libarchive jest biblioteką służacą to tworzenia i odczytu wielu
@@ -99,11 +100,6 @@ bsdtar - implementacja programu tar(1), oparta na libarchive.
 %patch0 -p1
 
 %build
-#%%{__libtoolize}
-#%%{__aclocal}
-#%%{__autoconf}
-#%%{__autoheader}
-#%%{__automake}
 %configure \
 	--disable-silent-rules \
 	--enable-bsdcpio=shared \
@@ -124,6 +120,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%doc README NEWS COPYING
 %attr(755,root,root) %{_libdir}/libarchive.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libarchive.so.13
 
