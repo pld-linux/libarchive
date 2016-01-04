@@ -3,7 +3,7 @@
 %bcond_without	static_libs # don't build static libraries
 
 Summary:	Multi-format archive and compression library
-Summary(pl.UTF-8):	Biblioteka do tworzenia i odczytu różnych formatów archiwów
+Summary(pl.UTF-8):	Biblioteka do archiwizacji i kompresji w wielu formatach
 Name:		libarchive
 Version:	3.1.2
 Release:	2
@@ -35,10 +35,13 @@ archives.
 See README for complete format support.
 
 %description -l pl.UTF-8
-Libarchive jest biblioteką służacą to tworzenia i odczytu wielu
-różnych strumieniowych formatów archiwów, włączając w to popularne
-odmiany TAR oraz wiele formatów CPIO. Biblioteka ta potrafi także
-zapisywać archiwa SHAR.
+Libarchive to biblioteka potrafiąca tworzyć i odczytywać kilka różnych
+formatów archiwów strumieniowych, w tym najbardziej popularne warianty
+archiwów TAR, kilka formatów CPIO oraz warianty BSD oraz GNU archiwów
+ar. Potrafi także zapisywać archiwa SHAR oraz odczytywać obrazy CDROM
+ISO9660 i archiwa ZIP.
+
+Pełny wykaz obsługiwanych formatów znajduje się w pliku README.
 
 %package devel
 Summary:	Header files for libarchive library
