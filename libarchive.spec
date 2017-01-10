@@ -5,12 +5,12 @@
 Summary:	Multi-format archive and compression library
 Summary(pl.UTF-8):	Biblioteka do archiwizacji i kompresji w wielu formatach
 Name:		libarchive
-Version:	3.2.1
+Version:	3.2.2
 Release:	1
 License:	BSD
 Group:		Libraries
 Source0:	http://www.libarchive.org/downloads/%{name}-%{version}.tar.gz
-# Source0-md5:	afa257047d1941a565216edbf0171e72
+# Source0-md5:	1ec00b7dcaf969dd2a5712f85f23c764
 Patch0:		%{name}-man_progname.patch
 URL:		http://www.libarchive.org/
 BuildRequires:	acl-devel
@@ -119,6 +119,7 @@ bsdtar - implementacja programu tar(1), oparta na libarchive.
 %patch0 -p1
 
 %build
+CPPFLAGS="%{rpmcppflags} -I/usr/include/lz4"
 %configure \
 	--disable-silent-rules \
 	--enable-bsdcat=shared \
@@ -140,7 +141,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README NEWS COPYING
+%doc NEWS COPYING
 %attr(755,root,root) %{_libdir}/libarchive.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libarchive.so.13
 
