@@ -5,12 +5,12 @@
 Summary:	Multi-format archive and compression library
 Summary(pl.UTF-8):	Biblioteka do archiwizacji i kompresji w wielu formatach
 Name:		libarchive
-Version:	3.2.2
+Version:	3.3.1
 Release:	1
 License:	BSD
 Group:		Libraries
 Source0:	http://www.libarchive.org/downloads/%{name}-%{version}.tar.gz
-# Source0-md5:	1ec00b7dcaf969dd2a5712f85f23c764
+# Source0-md5:	d2af45480aa5b0db5b5f3919cd0ea65e
 Patch0:		%{name}-man_progname.patch
 URL:		http://www.libarchive.org/
 BuildRequires:	acl-devel
@@ -120,18 +120,24 @@ bsdtar - implementacja programu tar(1), oparta na libarchive.
 
 %build
 CPPFLAGS="%{rpmcppflags} -I/usr/include/lz4"
+# disable openssl, nettle has all necessary functionality
 %configure \
 	--disable-silent-rules \
 	--enable-bsdcat=shared \
 	--enable-bsdcpio=shared \
 	--enable-bsdtar=shared \
-	--enable-static%{!?with_static_libs:=no}
+	--enable-static%{!?with_static_libs:=no} \
+	--with-lzo2 \
+	--without-openssl
 %{__make} -j1
 
 %install
 rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+# obsoleted by pkg-config
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libarchive.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -148,7 +154,6 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libarchive.so
-%{_libdir}/libarchive.la
 %{_includedir}/archive*.h
 %{_mandir}/man3/archive_*.3*
 %{_mandir}/man3/libarchive.3*
