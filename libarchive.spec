@@ -5,12 +5,12 @@
 Summary:	Multi-format archive and compression library
 Summary(pl.UTF-8):	Biblioteka do archiwizacji i kompresji w wielu formatach
 Name:		libarchive
-Version:	3.3.3
-Release:	2
+Version:	3.4.0
+Release:	1
 License:	BSD
 Group:		Libraries
 Source0:	http://www.libarchive.org/downloads/%{name}-%{version}.tar.gz
-# Source0-md5:	4038e366ca5b659dae3efcc744e72120
+# Source0-md5:	6046396255bd7cf6d0f6603a9bda39ac
 Patch0:		%{name}-man_progname.patch
 URL:		http://www.libarchive.org/
 BuildRequires:	acl-devel
@@ -18,15 +18,18 @@ BuildRequires:	attr-devel
 BuildRequires:	bzip2-devel
 # for <ext2fs/ext2_fs.h>
 BuildRequires:	e2fsprogs-devel
+BuildRequires:	libb2-devel
 BuildRequires:	libxml2-devel >= 2
 BuildRequires:	lz4-devel >= r131
 BuildRequires:	lzo-devel >= 2
 BuildRequires:	nettle-devel
 BuildRequires:	pkgconfig
 BuildRequires:	richacl-devel
-BuildRequires:	xz-devel
+BuildRequires:	xz-devel >= 1:5.2
 BuildRequires:	zlib-devel
+BuildRequires:	zstd-devel
 Requires:	lz4-libs >= r131
+Requires:	xz-libs >= 1:5.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -55,11 +58,14 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	acl-devel
 Requires:	attr-devel
 Requires:	bzip2-devel
+Requires:	libb2-devel
 Requires:	libxml2-devel
 Requires:	lz4-devel >= r131
 Requires:	nettle-devel
-Requires:	xz-devel
+Requires:	richacl-devel
+Requires:	xz-devel >= 1:5.2
 Requires:	zlib-devel
+Requires:	zstd-devel
 
 %description devel
 Header files for libarchive library.
