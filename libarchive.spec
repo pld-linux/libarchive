@@ -5,12 +5,12 @@
 Summary:	Multi-format archive and compression library
 Summary(pl.UTF-8):	Biblioteka do archiwizacji i kompresji w wielu formatach
 Name:		libarchive
-Version:	3.4.3
+Version:	3.5.1
 Release:	1
 License:	BSD
 Group:		Libraries
 Source0:	http://www.libarchive.org/downloads/%{name}-%{version}.tar.xz
-# Source0-md5:	4b216ea3015ecf8ae555a2026f9a6b73
+# Source0-md5:	1f8c29149832baff8bae232fd2f9b0ec
 Patch0:		%{name}-man_progname.patch
 URL:		http://www.libarchive.org/
 BuildRequires:	acl-devel
@@ -138,7 +138,7 @@ CPPFLAGS="%{rpmcppflags} -I/usr/include/lz4"
 	--enable-static%{!?with_static_libs:=no} \
 	--with-lzo2 \
 	--without-openssl
-%{__make} -j1
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
