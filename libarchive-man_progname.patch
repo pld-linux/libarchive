@@ -1,8 +1,8 @@
-diff -urN libarchive-2.8.4/cpio/bsdcpio.1 libarchive-2.8.4.new//cpio/bsdcpio.1
---- libarchive-2.8.4/cpio/bsdcpio.1	2010-03-07 19:06:15.000000000 +0100
-+++ libarchive-2.8.4.new//cpio/bsdcpio.1	2010-08-09 16:15:19.662939678 +0200
+diff -urNp -x '*.orig' libarchive-3.5.1.org/cpio/bsdcpio.1 libarchive-3.5.1/cpio/bsdcpio.1
+--- libarchive-3.5.1.org/cpio/bsdcpio.1	2020-12-26 02:29:38.000000000 +0100
++++ libarchive-3.5.1/cpio/bsdcpio.1	2021-05-06 00:11:13.180635623 +0200
 @@ -28,7 +28,7 @@
- .Dt BSDCPIO 1
+ .Dt CPIO 1
  .Os
  .Sh NAME
 -.Nm cpio
@@ -10,11 +10,11 @@ diff -urN libarchive-2.8.4/cpio/bsdcpio.1 libarchive-2.8.4.new//cpio/bsdcpio.1
  .Nd copy files to and from archives
  .Sh SYNOPSIS
  .Nm
-diff -urN libarchive-2.8.4/tar/bsdtar.1 libarchive-2.8.4.new//tar/bsdtar.1
---- libarchive-2.8.4/tar/bsdtar.1	2010-04-23 22:34:09.000000000 +0200
-+++ libarchive-2.8.4.new//tar/bsdtar.1	2010-08-09 16:14:59.660443536 +0200
-@@ -28,7 +28,7 @@
- .Dt BSDTAR 1
+diff -urNp -x '*.orig' libarchive-3.5.1.org/tar/bsdtar.1 libarchive-3.5.1/tar/bsdtar.1
+--- libarchive-3.5.1.org/tar/bsdtar.1	2020-12-26 02:29:38.000000000 +0100
++++ libarchive-3.5.1/tar/bsdtar.1	2021-05-06 00:11:13.180635623 +0200
+@@ -29,7 +29,7 @@
+ .Dt TAR 1
  .Os
  .Sh NAME
 -.Nm tar
