@@ -5,12 +5,14 @@
 Summary:	Multi-format archive and compression library
 Summary(pl.UTF-8):	Biblioteka do archiwizacji i kompresji w wielu formatach
 Name:		libarchive
-Version:	3.5.2
+Version:	3.6.0
 Release:	1
 License:	BSD
 Group:		Libraries
+# see main page, downloads index may be out of date
+#Source0Download: http://www.libarchive.org/
 Source0:	http://www.libarchive.org/downloads/%{name}-%{version}.tar.xz
-# Source0-md5:	2ba9f1f8c169aa9caf8e2d34dde323be
+# Source0-md5:	93f96acdb9e7277278edb154e5d76e49
 Patch0:		%{name}-man_progname.patch
 URL:		http://www.libarchive.org/
 BuildRequires:	acl-devel
