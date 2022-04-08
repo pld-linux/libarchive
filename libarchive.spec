@@ -11,7 +11,7 @@ License:	BSD
 Group:		Libraries
 # see main page, downloads index may be out of date
 #Source0Download: http://www.libarchive.org/
-Source0:	http://www.libarchive.org/downloads/%{name}-%{version}.tar.xz
+Source0:	https://www.libarchive.org/downloads/%{name}-%{version}.tar.xz
 # Source0-md5:	9465f7995649c9ea84854a7fd8c76f30
 Patch0:		%{name}-man_progname.patch
 URL:		http://www.libarchive.org/
