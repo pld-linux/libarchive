@@ -1,12 +1,12 @@
 #
 # Conditional build:
-%bcond_without	static_libs # don't build static libraries
+%bcond_without	static_libs # static library
 
 Summary:	Multi-format archive and compression library
 Summary(pl.UTF-8):	Biblioteka do archiwizacji i kompresji w wielu formatach
 Name:		libarchive
 Version:	3.6.2
-Release:	1
+Release:	2
 License:	BSD
 Group:		Libraries
 # see main page, downloads index may be out of date
@@ -14,13 +14,17 @@ Group:		Libraries
 Source0:	https://www.libarchive.org/downloads/%{name}-%{version}.tar.xz
 # Source0-md5:	72cbb3c085624c825f627bfc8f52ce53
 Patch0:		%{name}-man_progname.patch
+Patch1:		%{name}-pc.patch
 URL:		http://www.libarchive.org/
 BuildRequires:	acl-devel
 BuildRequires:	attr-devel
+BuildRequires:	autoconf >= 2.69
+BuildRequires:	automake >= 1:1.11
 BuildRequires:	bzip2-devel
 # for <ext2fs/ext2_fs.h>
 BuildRequires:	e2fsprogs-devel
 BuildRequires:	libb2-devel
+BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 2
 BuildRequires:	lz4-devel >= r131
 BuildRequires:	lzo-devel >= 2
@@ -128,8 +132,14 @@ bsdtar - implementacja programu tar(1), oparta na libarchive.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
+%{__libtoolize}
+%{__aclocal} -I build/autoconf
+%{__autoconf}
+%{__autoheader}
+%{__automake}
 CPPFLAGS="%{rpmcppflags} -I/usr/include/lz4"
 # disable openssl, nettle has all necessary functionality
 %configure \

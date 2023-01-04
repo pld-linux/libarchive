@@ -1,0 +1,12 @@
+--- libarchive-3.6.2/configure.ac.orig	2022-12-09 14:38:44.000000000 +0100
++++ libarchive-3.6.2/configure.ac	2023-01-04 20:42:49.082195258 +0100
+@@ -378,7 +378,9 @@ if test "x$with_iconv" != "xno"; then
+     AC_CHECK_HEADERS([localcharset.h])
+     am_save_LIBS="$LIBS"
+     LIBS="${LIBS} ${LIBICONV}"
++    if test "x${LIBICONV}" != x ; then
+     LIBSREQUIRED="$LIBSREQUIRED${LIBSREQUIRED:+ }iconv"
++    fi
+     AC_CHECK_FUNCS([locale_charset])
+     LIBS="${am_save_LIBS}"
+     if test "x$ac_cv_func_locale_charset" != "xyes"; then
