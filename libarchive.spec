@@ -5,20 +5,19 @@
 Summary:	Multi-format archive and compression library
 Summary(pl.UTF-8):	Biblioteka do archiwizacji i kompresji w wielu formatach
 Name:		libarchive
-Version:	3.6.2
-Release:	2
+Version:	3.7.1
+Release:	1
 License:	BSD
 Group:		Libraries
 # see main page, downloads index may be out of date
 #Source0Download: http://www.libarchive.org/
 Source0:	https://www.libarchive.org/downloads/%{name}-%{version}.tar.xz
-# Source0-md5:	72cbb3c085624c825f627bfc8f52ce53
+# Source0-md5:	11a217b523dcdd178490bdb1f83353f3
 Patch0:		%{name}-man_progname.patch
-Patch1:		%{name}-pc.patch
 URL:		http://www.libarchive.org/
 BuildRequires:	acl-devel
 BuildRequires:	attr-devel
-BuildRequires:	autoconf >= 2.69
+BuildRequires:	autoconf >= 2.71
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	bzip2-devel
 # for <ext2fs/ext2_fs.h>
@@ -129,10 +128,21 @@ bsdtar - tar(1) implementation based on libarchive.
 %description -n bsdtar -l pl.UTF-8
 bsdtar - implementacja programu tar(1), oparta na libarchive.
 
+%package -n bsdunzip
+Summary:	bsdunzip - unzip(1) implementation based on libarchive
+Summary(pl.UTF-8):	bsdunzip - implementacja programu unzip(1) oparta na libarchive
+Group:		Applications/Archiving
+Requires:	%{name} = %{version}-%{release}
+
+%description -n bsdunzip
+bsdunzip - unzip(1) implementation based on libarchive.
+
+%description -n bsdunzip -l pl.UTF-8
+bsdunzip - implementacja programu unzip(1), oparta na libarchive.
+
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 %{__libtoolize}
@@ -206,3 +216,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/bsdtar
 %{_mandir}/man1/bsdtar.1*
+
+%files -n bsdunzip
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/bsdunzip
+%{_mandir}/man1/bsdunzip.1*
