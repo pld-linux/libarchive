@@ -5,14 +5,14 @@
 Summary:	Multi-format archive and compression library
 Summary(pl.UTF-8):	Biblioteka do archiwizacji i kompresji w wielu formatach
 Name:		libarchive
-Version:	3.7.4
+Version:	3.7.5
 Release:	1
 License:	BSD
 Group:		Libraries
 # see main page, downloads index may be out of date
 #Source0Download: http://www.libarchive.org/
 Source0:	https://www.libarchive.org/downloads/%{name}-%{version}.tar.xz
-# Source0-md5:	1bab4c1b443ecf4f23ff9881665e680a
+# Source0-md5:	cf13470c31f070d2cf6ec5ba8b5f045d
 Patch0:		%{name}-man_progname.patch
 URL:		http://www.libarchive.org/
 BuildRequires:	acl-devel
@@ -33,10 +33,11 @@ BuildRequires:	richacl-devel
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRequires:	xz-devel >= 1:5.2
-BuildRequires:	zlib-devel
+BuildRequires:	zlib-devel >= 1.2.1
 BuildRequires:	zstd-devel
 Requires:	lz4-libs >= r131
 Requires:	xz-libs >= 1:5.2
+Requires:	zlib >= 1.2.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -71,7 +72,7 @@ Requires:	lz4-devel >= r131
 Requires:	nettle-devel
 Requires:	richacl-devel
 Requires:	xz-devel >= 1:5.2
-Requires:	zlib-devel
+Requires:	zlib-devel >= 1.2.1
 Requires:	zstd-devel
 
 %description devel
