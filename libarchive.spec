@@ -62,7 +62,7 @@ Pełny wykaz obsługiwanych formatów znajduje się w pliku README.
 Summary:	Header files for libarchive library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libarchive
 Group:		Development/Libraries
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}%{?_isa} = %{version}-%{release}
 Requires:	acl-devel
 Requires:	attr-devel
 Requires:	bzip2-devel
@@ -85,7 +85,7 @@ Pliki nagłówkowe biblioteki libarchive.
 Summary:	Static libarchive library
 Summary(pl.UTF-8):	Statyczna biblioteka libarchive
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}-%{release}
+Requires:	%{name}-devel%{?_isa} = %{version}-%{release}
 
 %description static
 Static libarchive library.
@@ -97,7 +97,7 @@ Statyczna biblioteka libarchive.
 Summary:	bsdcat - cat(1) implementation based on libarchive
 Summary(pl.UTF-8):	bsdcat - implementacja programu cat(1) oparta na libarchive
 Group:		Applications/Archiving
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}%{?_isa} = %{version}-%{release}
 
 %description -n bsdcat
 bsdcat - cat(1) implementation based on libarchive.
@@ -109,7 +109,7 @@ bsdcat - implementacja programu cat(1), oparta na libarchive.
 Summary:	bsdcpio - cpio(1) implementation based on libarchive
 Summary(pl.UTF-8):	bsdcpio - implementacja programu cpio(1) oparta na libarchive
 Group:		Applications/Archiving
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}%{?_isa} = %{version}-%{release}
 
 %description -n bsdcpio
 bsdcpio - cpio(1) implementation based on libarchive.
@@ -121,7 +121,7 @@ bsdcpio - implementacja programu cpio(1), oparta na libarchive.
 Summary:	bsdtar - tar(1) implementation based on libarchive
 Summary(pl.UTF-8):	bsdtar - implementacja programu tar(1) oparta na libarchive
 Group:		Applications/Archiving
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}%{?_isa} = %{version}-%{release}
 
 %description -n bsdtar
 bsdtar - tar(1) implementation based on libarchive.
@@ -133,7 +133,7 @@ bsdtar - implementacja programu tar(1), oparta na libarchive.
 Summary:	bsdunzip - unzip(1) implementation based on libarchive
 Summary(pl.UTF-8):	bsdunzip - implementacja programu unzip(1) oparta na libarchive
 Group:		Applications/Archiving
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}%{?_isa} = %{version}-%{release}
 
 %description -n bsdunzip
 bsdunzip - unzip(1) implementation based on libarchive.
