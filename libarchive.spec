@@ -6,7 +6,7 @@ Summary:	Multi-format archive and compression library
 Summary(pl.UTF-8):	Biblioteka do archiwizacji i kompresji w wielu formatach
 Name:		libarchive
 Version:	3.8.1
-Release:	1
+Release:	2
 License:	BSD
 Group:		Libraries
 # see main page, downloads index may be out of date
@@ -27,6 +27,7 @@ BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 2
 BuildRequires:	lz4-devel >= r131
 BuildRequires:	lzo-devel >= 2
+# also possible: mbedtls, openssl
 BuildRequires:	nettle-devel
 BuildRequires:	pkgconfig
 BuildRequires:	richacl-devel
@@ -160,6 +161,7 @@ CPPFLAGS="%{rpmcppflags} -I/usr/include/lz4"
 	--enable-bsdtar=shared \
 	--enable-static%{!?with_static_libs:=no} \
 	--with-lzo2 \
+	--with-nettle \
 	--without-openssl
 %{__make}
 
