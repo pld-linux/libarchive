@@ -5,15 +5,17 @@
 Summary:	Multi-format archive and compression library
 Summary(pl.UTF-8):	Biblioteka do archiwizacji i kompresji w wielu formatach
 Name:		libarchive
-Version:	3.8.1
-Release:	2
+Version:	3.8.5
+Release:	1
 License:	BSD
 Group:		Libraries
 # see main page, downloads index may be out of date
 #Source0Download: http://www.libarchive.org/
 Source0:	https://www.libarchive.org/downloads/%{name}-%{version}.tar.xz
-# Source0-md5:	80fd1a7acc4da7c7d4a5f9f96df6e3ff
+# Source0-md5:	2cd5a73ed7fe7f9da22d34ac1048534e
 Patch0:		%{name}-man_progname.patch
+Patch1:		%{name}-nettle.patch
+Patch2:		%{name}-nettle2.patch
 URL:		http://www.libarchive.org/
 BuildRequires:	acl-devel
 BuildRequires:	attr-devel
@@ -145,6 +147,8 @@ bsdunzip - implementacja programu unzip(1), oparta na libarchive.
 %prep
 %setup -q
 %patch -P0 -p1
+%patch -P1 -p1
+%patch -P2 -p1 -b .orig
 
 %build
 %{__libtoolize}
@@ -182,12 +186,12 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc NEWS COPYING
-%attr(755,root,root) %{_libdir}/libarchive.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libarchive.so.13
+%{_libdir}/libarchive.so.*.*.*
+%ghost %{_libdir}/libarchive.so.13
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libarchive.so
+%{_libdir}/libarchive.so
 %{_includedir}/archive*.h
 %{_mandir}/man3/archive_*.3*
 %{_mandir}/man3/libarchive.3*

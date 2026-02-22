@@ -1,0 +1,101 @@
+--- libarchive-3.8.5/libarchive/archive_digest.c.orig	2026-01-05 11:30:19.000000000 +0100
++++ libarchive-3.8.5/libarchive/archive_digest.c	2026-02-22 17:23:18.331360134 +0100
+@@ -320,7 +320,11 @@ __archive_md5update(archive_md5_ctx *ctx
+ static int
+ __archive_md5final(archive_md5_ctx *ctx, void *md)
+ {
++#if NETTLE_VERSION_MAJOR < 4
+   md5_digest(ctx, MD5_DIGEST_SIZE, md);
++#else
++  md5_digest(ctx, md);
++#endif
+   return (ARCHIVE_OK);
+ }
+ 
+@@ -503,7 +507,11 @@ __archive_ripemd160update(archive_rmd160
+ static int
+ __archive_ripemd160final(archive_rmd160_ctx *ctx, void *md)
+ {
++#if NETTLE_VERSION_MAJOR < 4
+   ripemd160_digest(ctx, RIPEMD160_DIGEST_SIZE, md);
++#else
++  ripemd160_digest(ctx, md);
++#endif
+   return (ARCHIVE_OK);
+ }
+ 
+@@ -731,7 +739,11 @@ __archive_sha1update(archive_sha1_ctx *c
+ static int
+ __archive_sha1final(archive_sha1_ctx *ctx, void *md)
+ {
++#if NETTLE_VERSION_MAJOR < 4
+   sha1_digest(ctx, SHA1_DIGEST_SIZE, md);
++#else
++  sha1_digest(ctx, md);
++#endif
+   return (ARCHIVE_OK);
+ }
+ 
+@@ -1011,7 +1023,11 @@ __archive_sha256update(archive_sha256_ct
+ static int
+ __archive_sha256final(archive_sha256_ctx *ctx, void *md)
+ {
++#if NETTLE_VERSION_MAJOR < 4
+   sha256_digest(ctx, SHA256_DIGEST_SIZE, md);
++#else
++  sha256_digest(ctx, md);
++#endif
+   return (ARCHIVE_OK);
+ }
+ 
+@@ -1263,7 +1279,11 @@ __archive_sha384update(archive_sha384_ct
+ static int
+ __archive_sha384final(archive_sha384_ctx *ctx, void *md)
+ {
++#if NETTLE_VERSION_MAJOR < 4
+   sha384_digest(ctx, SHA384_DIGEST_SIZE, md);
++#else
++  sha384_digest(ctx, md);
++#endif
+   return (ARCHIVE_OK);
+ }
+ 
+@@ -1539,7 +1559,11 @@ __archive_sha512update(archive_sha512_ct
+ static int
+ __archive_sha512final(archive_sha512_ctx *ctx, void *md)
+ {
++#if NETTLE_VERSION_MAJOR < 4
+   sha512_digest(ctx, SHA512_DIGEST_SIZE, md);
++#else
++  sha512_digest(ctx, md);
++#endif
+   return (ARCHIVE_OK);
+ }
+ 
+--- libarchive-3.8.5/libarchive/archive_digest_private.h.orig	2026-01-05 11:30:19.000000000 +0100
++++ libarchive-3.8.5/libarchive/archive_digest_private.h	2026-02-22 18:08:18.496732082 +0100
+@@ -137,15 +137,21 @@
+ /* Nettle crypto headers */
+ #if defined(ARCHIVE_CRYPTO_MD5_NETTLE)
+ #include <nettle/md5.h>
++#include <nettle/version.h>
+ #endif
+ #if defined(ARCHIVE_CRYPTO_RMD160_NETTLE)
+ #include <nettle/ripemd160.h>
++#include <nettle/version.h>
+ #endif
+-#if defined(ARCHIVE_CRYPTO_SHA1_NETTLE) ||\
+-  defined(ARCHIVE_CRYPTO_SHA256_NETTLE) ||\
++#if defined(ARCHIVE_CRYPTO_SHA1_NETTLE)
++#include <nettle/sha1.h>
++#include <nettle/version.h>
++#endif
++#if defined(ARCHIVE_CRYPTO_SHA256_NETTLE) ||\
+   defined(ARCHIVE_CRYPTO_SHA384_NETTLE) ||\
+   defined(ARCHIVE_CRYPTO_SHA512_NETTLE)
+-#include <nettle/sha.h>
++#include <nettle/sha2.h>
++#include <nettle/version.h>
+ #endif
+ 
+ /* OpenSSL crypto headers */
