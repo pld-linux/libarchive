@@ -5,17 +5,16 @@
 Summary:	Multi-format archive and compression library
 Summary(pl.UTF-8):	Biblioteka do archiwizacji i kompresji w wielu formatach
 Name:		libarchive
-Version:	3.8.5
+Version:	3.8.7
 Release:	1
 License:	BSD
 Group:		Libraries
 # see main page, downloads index may be out of date
 #Source0Download: http://www.libarchive.org/
 Source0:	https://www.libarchive.org/downloads/%{name}-%{version}.tar.xz
-# Source0-md5:	2cd5a73ed7fe7f9da22d34ac1048534e
+# Source0-md5:	dd48e73d519e309ce08ce76a004fb0e0
 Patch0:		%{name}-man_progname.patch
-Patch1:		%{name}-nettle.patch
-Patch2:		%{name}-nettle2.patch
+Patch1:		%{name}-nettle2.patch
 URL:		http://www.libarchive.org/
 BuildRequires:	acl-devel
 BuildRequires:	attr-devel
@@ -147,8 +146,7 @@ bsdunzip - implementacja programu unzip(1), oparta na libarchive.
 %prep
 %setup -q
 %patch -P0 -p1
-%patch -P1 -p1
-%patch -P2 -p1 -b .orig
+%patch -P1 -p1 -b .orig
 
 %build
 %{__libtoolize}
