@@ -5,14 +5,14 @@
 Summary:	Multi-format archive and compression library
 Summary(pl.UTF-8):	Biblioteka do archiwizacji i kompresji w wielu formatach
 Name:		libarchive
-Version:	3.8.7
+Version:	3.8.9
 Release:	1
 License:	BSD
 Group:		Libraries
 # see main page, downloads index may be out of date
 #Source0Download: http://www.libarchive.org/
 Source0:	https://www.libarchive.org/downloads/%{name}-%{version}.tar.xz
-# Source0-md5:	dd48e73d519e309ce08ce76a004fb0e0
+# Source0-md5:	535e3afec5f61d493f0b1b9e8bcf7539
 Patch0:		%{name}-man_progname.patch
 Patch1:		%{name}-nettle2.patch
 URL:		http://www.libarchive.org/
