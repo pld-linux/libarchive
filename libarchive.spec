@@ -5,16 +5,16 @@
 Summary:	Multi-format archive and compression library
 Summary(pl.UTF-8):	Biblioteka do archiwizacji i kompresji w wielu formatach
 Name:		libarchive
-Version:	3.8.9
+Version:	3.8.10
 Release:	1
 License:	BSD
 Group:		Libraries
 # see main page, downloads index may be out of date
 #Source0Download: http://www.libarchive.org/
 Source0:	https://www.libarchive.org/downloads/%{name}-%{version}.tar.xz
-# Source0-md5:	535e3afec5f61d493f0b1b9e8bcf7539
+# Source0-md5:	7ca38379cb296edf27fe950b9c092a6e
 Patch0:		%{name}-man_progname.patch
-Patch1:		%{name}-nettle2.patch
+Patch1:		libxml2-config.patch
 URL:		http://www.libarchive.org/
 BuildRequires:	acl-devel
 BuildRequires:	attr-devel
@@ -25,7 +25,7 @@ BuildRequires:	bzip2-devel
 BuildRequires:	e2fsprogs-devel
 BuildRequires:	libb2-devel
 BuildRequires:	libtool
-BuildRequires:	libxml2-devel >= 2
+BuildRequires:	libxml2-devel >= 1:2.7.3
 BuildRequires:	lz4-devel >= r131
 BuildRequires:	lzo-devel >= 2
 # also possible: mbedtls, openssl
@@ -37,6 +37,7 @@ BuildRequires:	xz
 BuildRequires:	xz-devel >= 1:5.2
 BuildRequires:	zlib-devel >= 1.2.1
 BuildRequires:	zstd-devel
+Requires:	libxml2 >= 1:2.7.3
 Requires:	lz4-libs >= r131
 Requires:	xz-libs >= 1:5.2
 Requires:	zlib >= 1.2.1
@@ -69,7 +70,7 @@ Requires:	acl-devel
 Requires:	attr-devel
 Requires:	bzip2-devel
 Requires:	libb2-devel
-Requires:	libxml2-devel
+Requires:	libxml2-devel >= 1:2.7.3
 Requires:	lz4-devel >= r131
 Requires:	nettle-devel
 Requires:	richacl-devel
@@ -146,7 +147,7 @@ bsdunzip - implementacja programu unzip(1), oparta na libarchive.
 %prep
 %setup -q
 %patch -P0 -p1
-%patch -P1 -p1 -b .orig
+%patch -P1 -p1
 
 %build
 %{__libtoolize}
