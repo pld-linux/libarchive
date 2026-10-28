@@ -6,7 +6,7 @@ Summary:	Multi-format archive and compression library
 Summary(pl.UTF-8):	Biblioteka do archiwizacji i kompresji w wielu formatach
 Name:		libarchive
 Version:	3.8.10
-Release:	1
+Release:	2
 License:	BSD
 Group:		Libraries
 # see main page, downloads index may be out of date
@@ -15,6 +15,7 @@ Source0:	https://www.libarchive.org/downloads/%{name}-%{version}.tar.xz
 # Source0-md5:	7ca38379cb296edf27fe950b9c092a6e
 Patch0:		%{name}-man_progname.patch
 Patch1:		libxml2-config.patch
+Patch2:		%{name}-xar-seek-offset.patch
 URL:		http://www.libarchive.org/
 BuildRequires:	acl-devel
 BuildRequires:	attr-devel
@@ -148,6 +149,7 @@ bsdunzip - implementacja programu unzip(1), oparta na libarchive.
 %setup -q
 %patch -P0 -p1
 %patch -P1 -p1
+%patch -P2 -p1
 
 %build
 %{__libtoolize}
