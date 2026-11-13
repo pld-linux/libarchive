@@ -5,17 +5,15 @@
 Summary:	Multi-format archive and compression library
 Summary(pl.UTF-8):	Biblioteka do archiwizacji i kompresji w wielu formatach
 Name:		libarchive
-Version:	3.8.10
-Release:	2
+Version:	3.8.11
+Release:	1
 License:	BSD
 Group:		Libraries
 # see main page, downloads index may be out of date
 #Source0Download: http://www.libarchive.org/
 Source0:	https://www.libarchive.org/downloads/%{name}-%{version}.tar.xz
-# Source0-md5:	7ca38379cb296edf27fe950b9c092a6e
+# Source0-md5:	06cd808c8b79ec02fa580e305eede08f
 Patch0:		%{name}-man_progname.patch
-Patch1:		libxml2-config.patch
-Patch2:		%{name}-xar-seek-offset.patch
 URL:		http://www.libarchive.org/
 BuildRequires:	acl-devel
 BuildRequires:	attr-devel
@@ -25,7 +23,7 @@ BuildRequires:	bzip2-devel
 # for <ext2fs/ext2_fs.h>
 BuildRequires:	e2fsprogs-devel
 BuildRequires:	libb2-devel
-BuildRequires:	libtool
+BuildRequires:	libtool >= 2:2
 BuildRequires:	libxml2-devel >= 1:2.7.3
 BuildRequires:	lz4-devel >= r131
 BuildRequires:	lzo-devel >= 2
@@ -38,10 +36,10 @@ BuildRequires:	xz
 BuildRequires:	xz-devel >= 1:5.2
 BuildRequires:	zlib-devel >= 1.2.1
 BuildRequires:	zstd-devel
-Requires:	libxml2 >= 1:2.7.3
-Requires:	lz4-libs >= r131
-Requires:	xz-libs >= 1:5.2
-Requires:	zlib >= 1.2.1
+Requires:	libxml2%{?_isa} >= 1:2.7.3
+Requires:	lz4-libs%{?_isa} >= r131
+Requires:	xz-libs%{?_isa} >= 1:5.2
+Requires:	zlib%{?_isa} >= 1.2.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -67,17 +65,17 @@ Summary:	Header files for libarchive library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libarchive
 Group:		Development/Libraries
 Requires:	%{name}%{?_isa} = %{version}-%{release}
-Requires:	acl-devel
-Requires:	attr-devel
-Requires:	bzip2-devel
-Requires:	libb2-devel
-Requires:	libxml2-devel >= 1:2.7.3
-Requires:	lz4-devel >= r131
-Requires:	nettle-devel
-Requires:	richacl-devel
-Requires:	xz-devel >= 1:5.2
-Requires:	zlib-devel >= 1.2.1
-Requires:	zstd-devel
+Requires:	acl-devel%{?_isa}
+Requires:	attr-devel%{?_isa}
+Requires:	bzip2-devel%{?_isa}
+Requires:	libb2-devel%{?_isa}
+Requires:	libxml2-devel%{?_isa} >= 1:2.7.3
+Requires:	lz4-devel%{?_isa} >= r131
+Requires:	nettle-devel%{?_isa}
+Requires:	richacl-devel%{?_isa}
+Requires:	xz-devel%{?_isa} >= 1:5.2
+Requires:	zlib-devel%{?_isa} >= 1.2.1
+Requires:	zstd-devel%{?_isa}
 
 %description devel
 Header files for libarchive library.
@@ -148,8 +146,6 @@ bsdunzip - implementacja programu unzip(1), oparta na libarchive.
 %prep
 %setup -q
 %patch -P0 -p1
-%patch -P1 -p1
-%patch -P2 -p1
 
 %build
 %{__libtoolize}
